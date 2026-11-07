@@ -14,6 +14,9 @@ export const profile = {
   availability: "Open to remote roles and relocation (Gulf / Europe)",
   email: "abdelrahman.i.rezk@gmail.com",
   phone: "+20 101 816 0185",
+  phoneHref: "tel:+201018160185",
+  // Same number on WhatsApp; wa.me needs digits only (country code, no +).
+  whatsappHref: "https://wa.me/201018160185?text=Hi%20Abdelrahman%2C%20I%20saw%20your%20portfolio",
   // Square photo in /public; set to null to show the monogram instead.
   photo: "/images/profile.jpg" as string | null,
   resumeUrl: "/resume/Abdelrahman_Abdelrehim_CV.pdf",

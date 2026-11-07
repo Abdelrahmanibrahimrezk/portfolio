@@ -3,44 +3,83 @@
 .card {
   display: grid;
   gap: 32px;
-  padding: 28px 22px;
+  padding: 24px 18px;
   border: 1px solid var(--border-strong);
   border-radius: calc(var(--radius) + 6px);
   background:
     radial-gradient(ellipse 70% 90% at 0% 100%, var(--accent-soft), transparent 70%),
     var(--surface);
 }
-@media (min-width: 900px) {
+@media (min-width: 640px) {
+  .card { padding: 32px; }
+}
+@media (min-width: 960px) {
   .card {
-    grid-template-columns: 1.3fr 1fr;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
     padding: 48px;
-    gap: 56px;
+    gap: 48px;
   }
 }
 
+.side { display: grid; gap: 24px; min-width: 0; }
 .copy { display: grid; gap: 14px; }
 .title { font-size: clamp(1.625rem, 1.2rem + 2vw, 2.5rem); }
 
-.actions { display: grid; gap: 12px; }
+.channels { list-style: none; display: grid; gap: 8px; }
+.channelRow { display: flex; gap: 8px; }
+.channelRow > a { flex: 1; }
 
-.emailRow { display: flex; gap: 8px; }
-.emailRow > a { flex: 1; }
-
-.socials {
-  list-style: none;
-  display: grid;
-  gap: 4px;
-  margin-top: 8px;
-}
-.social {
-  display: inline-flex;
+.channel {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  min-height: 40px;
-  font: 500 0.875rem var(--font-mono);
+  gap: 12px;
+  min-width: 0;
+  min-height: 56px;
+  padding: 8px 14px 8px 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-elev);
+  transition: border-color 0.15s;
+}
+.channel:hover { border-color: var(--accent); }
+
+.channelIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.channelIcon svg { width: 18px; height: 18px; }
+
+.channelText { display: grid; min-width: 0; }
+.channelLabel { font-size: 0.75rem; color: var(--text-faint); }
+.channelValue {
+  font: 500 0.875rem/1.4 var(--font-mono);
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.footerRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.socials { list-style: none; display: flex; gap: 4px; }
+.social {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   color: var(--text-muted);
 }
-.social:hover { color: var(--accent); }
-.social svg { width: 18px; height: 18px; }
-.social span { overflow-wrap: anywhere; }
+.social:hover { color: var(--accent); background: var(--surface-2); }
+.social svg { width: 20px; height: 20px; }
