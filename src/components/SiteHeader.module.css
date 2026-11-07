@@ -1,0 +1,118 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font: 600 1rem/1 var(--font-mono);
+  min-height: 44px;
+}
+.prompt { color: var(--accent); }
+.cursor {
+  width: 8px;
+  height: 1.05em;
+  margin-left: 4px;
+  background: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menuButton {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+.menuButton svg { width: 20px; height: 20px; }
+
+/* Mobile: full-screen sheet below the header */
+.nav {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px var(--gutter) 40px;
+  background: var(--bg);
+  overflow-y: auto;
+}
+.nav[data-open="true"] { display: flex; }
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.link:hover { color: var(--text); background: var(--surface); }
+.link[aria-current="page"] { color: var(--text); }
+.link[aria-current="page"]::before {
+  content: ">";
+  margin-right: 10px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.cta { align-self: stretch; }
+
+@media (min-width: 900px) {
+  .nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    background: none;
+    overflow: visible;
+    margin-left: auto;
+  }
+  .list { display: flex; gap: 4px; }
+  .link {
+    min-height: 40px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .link[aria-current="page"]::before { margin-right: 6px; }
+  .cta { align-self: auto; min-height: 38px; padding: 8px 14px; }
+  .menuButton { display: none; }
+  .actions { order: 3; }
+}

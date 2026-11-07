@@ -1,0 +1,39 @@
+.recognition {
+  display: grid;
+  gap: 28px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 100%, var(--accent-soft), transparent 70%),
+    var(--surface);
+}
+@media (min-width: 900px) {
+  .recognition { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; padding: 32px; align-items: center; }
+}
+
+.recognitionImage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-elev);
+}
+.recognitionImage img { object-fit: cover; }
+
+.recognitionCopy {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+.recognitionCopy h2 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.125rem); }
+
+.recognitionNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 0.875rem var(--font-mono);
+  color: var(--accent);
+}
+.recognitionNote svg { width: 16px; height: 16px; }

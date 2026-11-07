@@ -1,0 +1,50 @@
+.figure {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  font-family: var(--font-mono);
+}
+
+.caption {
+  margin-bottom: 14px;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+.caption span { color: var(--prompt); }
+
+.flow {
+  list-style: none;
+  display: grid;
+  gap: 0;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  margin-left: 14px;
+  border-left: 1px dashed var(--border-strong);
+  font-size: 0.8125rem;
+  color: var(--text);
+}
+.step::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-elev);
+  border: 2px solid var(--accent);
+}
+.step:last-child::before { background: var(--accent); }
+
+.num {
+  min-width: 2ch;
+  margin-left: 6px;
+  color: var(--accent);
+}

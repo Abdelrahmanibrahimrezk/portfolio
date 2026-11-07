@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+.DS_Store
+.vercel
+
+# Raw source material — keep out of the public repo (contains client names / internal notes)
+/Achievments/
+/AI_Engineering_Portfolio.md
+/Abdelrahman_Abdelrehim_Senior_AI.pdf

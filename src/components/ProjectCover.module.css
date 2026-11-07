@@ -1,0 +1,73 @@
+.cover {
+  --hue: 170;
+  --tint: hsl(var(--hue) 80% 62%);
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  padding: 16px 18px;
+  background:
+    linear-gradient(var(--border) 1px, transparent 1px) 0 0 / 100% 24px,
+    var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+}
+:root[data-theme="light"] .cover { --tint: hsl(var(--hue) 70% 38%); }
+
+.cover[data-variant="hero"] {
+  aspect-ratio: auto;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.image { object-fit: cover; }
+
+.glow {
+  position: absolute;
+  inset: auto -20% -60% 30%;
+  height: 120%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--tint) 28%, transparent), transparent);
+  pointer-events: none;
+}
+
+.file {
+  position: relative;
+  margin-bottom: 12px;
+  font-size: 0.75rem;
+  color: var(--tint);
+}
+.file span { color: var(--text-faint); }
+
+.flow {
+  position: relative;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+.cover[data-variant="hero"] .flow {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--tint) 35%, var(--border));
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  font-size: 0.75rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cover[data-variant="card"] .stage:nth-child(2) { margin-left: 16px; }
+.cover[data-variant="card"] .stage:nth-child(3) { margin-left: 32px; }
+.cover[data-variant="card"] .stage:nth-child(4) { margin-left: 48px; }
+.cover[data-variant="hero"] .stage { width: auto; }
+
+.index { color: var(--tint); }

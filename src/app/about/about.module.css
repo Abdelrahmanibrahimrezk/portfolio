@@ -1,0 +1,46 @@
+.intro {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+  margin-top: 8px;
+}
+@media (min-width: 640px) {
+  .intro { grid-template-columns: auto 1fr; gap: 28px; }
+}
+.introText { display: grid; gap: 20px; justify-items: start; }
+
+.split { display: grid; gap: 8px; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: 1fr 1.6fr; gap: 48px; }
+}
+
+.focus { list-style: none; display: grid; gap: 10px; }
+.focus li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-weight: 550;
+}
+.focus span { font: 500 0.8125rem var(--font-mono); color: var(--accent); }
+
+.twoCol { display: grid; gap: 48px; }
+@media (min-width: 900px) {
+  .twoCol { grid-template-columns: 1fr 1fr; }
+}
+
+.cards { list-style: none; display: grid; gap: 12px; }
+.card {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.card h3 { font-size: 1.0625rem; line-height: 1.35; }
+.year { font: 600 0.8125rem var(--font-mono); color: var(--accent); }
+.org { color: var(--text-muted); font-size: 0.9375rem; }

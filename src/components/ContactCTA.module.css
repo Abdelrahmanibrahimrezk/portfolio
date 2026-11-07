@@ -1,0 +1,46 @@
+.section { border-top: 0; }
+
+.card {
+  display: grid;
+  gap: 32px;
+  padding: 28px 22px;
+  border: 1px solid var(--border-strong);
+  border-radius: calc(var(--radius) + 6px);
+  background:
+    radial-gradient(ellipse 70% 90% at 0% 100%, var(--accent-soft), transparent 70%),
+    var(--surface);
+}
+@media (min-width: 900px) {
+  .card {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    padding: 48px;
+    gap: 56px;
+  }
+}
+
+.copy { display: grid; gap: 14px; }
+.title { font-size: clamp(1.625rem, 1.2rem + 2vw, 2.5rem); }
+
+.actions { display: grid; gap: 12px; }
+
+.emailRow { display: flex; gap: 8px; }
+.emailRow > a { flex: 1; }
+
+.socials {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  font: 500 0.875rem var(--font-mono);
+  color: var(--text-muted);
+}
+.social:hover { color: var(--accent); }
+.social svg { width: 18px; height: 18px; }
+.social span { overflow-wrap: anywhere; }
