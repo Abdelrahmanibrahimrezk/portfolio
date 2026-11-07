@@ -1,0 +1,28 @@
+.box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 62px;
+  padding: 12px 14px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.box[data-awake="false"] .icon { color: var(--prompt); background: color-mix(in srgb, var(--prompt) 14%, transparent); }
+.icon svg { width: 16px; height: 16px; }
+
+.text { font-size: 0.875rem; line-height: 1.5; color: var(--text-muted); }
+.time { font: 600 0.9375rem var(--font-mono); color: var(--text); }
+.meta { color: var(--text-faint); }
+.reply { color: var(--text); }

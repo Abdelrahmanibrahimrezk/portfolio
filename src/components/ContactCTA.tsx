@@ -15,7 +15,7 @@ export default function ContactCTA() {
             <div className={styles.copy}>
               <p className="eyebrow">contact</p>
               <h2 id="contact-title" className={styles.title}>
-                Building something with speech or LLMs? Let&apos;s talk.
+                Let&apos;s talk.
               </h2>
               <p className="lead">
                 I&apos;m looking for Senior AI / ML Engineer roles — remote, or relocating to the Gulf or Europe.

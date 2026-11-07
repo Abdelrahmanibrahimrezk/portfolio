@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { profile } from "@/data/profile";
 import { Check, Send } from "./Icons";
+import LocalTime from "./LocalTime";
 import styles from "./ContactForm.module.css";
 
 /**
@@ -13,8 +14,33 @@ const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+/** One-click openers; the visitor continues typing after the text. */
+const STARTERS = [
+  { label: "Full-time role", topic: "Full-time role", text: "Hi Abdelrahman, I'm hiring for a role that matches your AI experience. The position is " },
+  { label: "Interview invite", topic: "Interview", text: "Hi Abdelrahman, we'd like to invite you to an interview for " },
+  { label: "New project", topic: "New project", text: "Hi Abdelrahman, I'm planning a new project and " },
+  { label: "Speech / Arabic ASR", topic: "Speech AI", text: "Hi Abdelrahman, we need help with speech recognition / Arabic audio — specifically " },
+  { label: "LLM or RAG app", topic: "LLM / RAG", text: "Hi Abdelrahman, we're building an LLM / RAG solution and " },
+  { label: "Consultation", topic: "Consultation", text: "Hi Abdelrahman, I'd like a short consultation about " },
+  { label: "Just saying hi", topic: "Hello", text: "Hi Abdelrahman, I came across your portfolio and " },
+];
+
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [topic, setTopic] = useState<string | null>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  const applyStarter = (starter: (typeof STARTERS)[number]) => {
+    const field = messageRef.current;
+    if (!field) return;
+    const current = field.value.trim();
+    // Replace an empty or untouched starter; otherwise keep what they wrote below the opener.
+    const untouched = current === "" || STARTERS.some((s) => s.text.trim() === current);
+    field.value = untouched ? starter.text : `${starter.text}\n\n${field.value}`;
+    setTopic(starter.topic);
+    field.focus();
+    field.setSelectionRange(starter.text.length, starter.text.length);
+  };
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +49,7 @@ export default function ContactForm() {
 
     // Without a key, fall back to opening the visitor's mail app with the message pre-filled.
     if (!ACCESS_KEY) {
-      const subject = encodeURIComponent(`Portfolio message from ${data.get("name")}`);
+      const subject = encodeURIComponent(`${topic ? `[${topic}] ` : ""}Portfolio message from ${data.get("name")}`);
       const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} (${data.get("email")})`);
       window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
       return;
@@ -31,7 +57,8 @@ export default function ContactForm() {
 
     setStatus("sending");
     data.append("access_key", ACCESS_KEY);
-    data.append("subject", `Portfolio message from ${data.get("name")}`);
+    data.append("subject", `${topic ? `[${topic}] ` : ""}Portfolio message from ${data.get("name")}`);
+    if (topic) data.append("topic", topic);
     data.append("from_name", "Portfolio contact form");
 
     try {
@@ -39,6 +66,7 @@ export default function ContactForm() {
       const json = (await res.json()) as { success?: boolean };
       if (!res.ok || !json.success) throw new Error("Submission failed");
       form.reset();
+      setTopic(null);
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -74,8 +102,27 @@ export default function ContactForm() {
       </div>
 
       <div className={styles.field}>
+        <p id="cf-starters-label" className={styles.startersLabel}>Not sure how to start? Pick one:</p>
+        <ul className={styles.starters} aria-labelledby="cf-starters-label">
+          {STARTERS.map((s) => (
+            <li key={s.label}>
+              <button
+                type="button"
+                className={styles.starter}
+                aria-pressed={topic === s.topic}
+                onClick={() => applyStarter(s)}
+              >
+                {s.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className={styles.field}>
         <label htmlFor="cf-message">Message</label>
         <textarea
+          ref={messageRef}
           id="cf-message"
           name="message"
           rows={5}
@@ -88,6 +135,8 @@ export default function ContactForm() {
 
       {/* Honeypot: hidden from people, bots fill it and Web3Forms discards the submission. */}
       <input type="checkbox" name="botcheck" className="visually-hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+      <LocalTime />
 
       <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
         <Send /> {status === "sending" ? "Sending…" : "Send message"}

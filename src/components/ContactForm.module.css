@@ -77,3 +77,29 @@
 .doneIcon svg { width: 20px; height: 20px; }
 .doneTitle { font-weight: 650; font-size: 1.125rem; }
 .doneText { color: var(--text-muted); margin-bottom: 6px; }
+
+.startersLabel { font-size: 0.875rem; font-weight: 600; }
+.starters {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.starter {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font: 500 0.8125rem/1.2 var(--font-sans);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.starter::before { content: "+ "; color: var(--accent); font-family: var(--font-mono); }
+.starter:hover { border-color: var(--accent); color: var(--text); }
+.starter[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text);
+}
