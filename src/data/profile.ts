@@ -52,7 +52,7 @@ export const profile = {
 export const highlights = [
   { value: "−61%", label: "Relative WER reduction", detail: "Egyptian-Arabic calls: 96% → 37% after Whisper fine-tuning" },
   { value: "87%", label: "Faster transcription", detail: "Multiprocessing, dynamic batching, dual-GPU" },
-  { value: "87%", label: "Intent accuracy (top)", detail: "Hierarchical intents with Qwen-14B + LoRA" },
+  { value: "87%", label: "Intent accuracy", detail: "160 intents + sub-intents with Qwen-14B + LoRA" },
   { value: "40", label: "Upwork contracts", detail: "25 five-star reviews · Top Rated" },
 ];
 

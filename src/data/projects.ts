@@ -37,7 +37,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "speech-analytics-platform",
-    title: "Enterprise Arabic Speech Analytics Platform",
+    title: "Gen AI Arabic Speech Analytics Platform",
     tagline: "Customer-care calls → transcripts → LLM insights → business dashboards.",
     category: "Speech AI",
     status: "Production",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     metrics: [
       { value: "−87%", label: "transcription runtime" },
       { value: "−61%", label: "relative WER" },
-      { value: "≤87%", label: "intent accuracy" },
+      { value: "87%", label: "intent accuracy" },
     ],
     problem: [
       "Customer-care conversations held the clearest signal about why customers call, why they call back and what keeps breaking — but it was locked inside audio that nobody had time to listen to.",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
       },
       {
         title: "Hierarchical intent taxonomy",
-        body: "Calls are mapped to ~31 top-level intents and their sub-intents using dynamic few-shot prompting and a LoRA-tuned Qwen-14B, with JSON parsing and allowed-label validation so every record is usable in reporting.",
+        body: "Calls are mapped to 160 combined intents and sub-intents using dynamic few-shot prompting and a LoRA-tuned Qwen-14B, with JSON parsing and allowed-label validation so every record is usable in reporting.",
       },
       {
         title: "Summaries that are safe to share",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
   {
     slug: "qwen-intent-classification",
     title: "Hierarchical Intent Classification with Qwen-14B",
-    tagline: "LoRA-tuned LLM mapping calls to a 31-intent taxonomy with validated JSON output.",
+    tagline: "LoRA-tuned LLM mapping calls to a 160-label intent + sub-intent taxonomy with validated JSON output.",
     category: "LLMs",
     status: "Deployed component",
     context: "Vodafone Egypt · LLM",
@@ -201,8 +201,8 @@ export const projects: Project[] = [
     summary:
       "Adapter-based fine-tuning and dynamic few-shot prompting of Qwen-14B to classify customer-care transcripts into intents and sub-intents, producing validated, report-ready labels.",
     metrics: [
-      { value: "≤87%", label: "accuracy" },
-      { value: "~31", label: "top-level intents" },
+      { value: "87%", label: "accuracy" },
+      { value: "160", label: "intents + sub-intents" },
       { value: "4-bit", label: "QLoRA training" },
     ],
     problem: [
@@ -247,7 +247,7 @@ export const projects: Project[] = [
       },
     ],
     results: [
-      "Up to 87% accuracy on hierarchical intent classification.",
+      "87% accuracy across 160 combined intents and sub-intents.",
       "Structured, validated intent labels powering repeat-contact and recurring-issue analytics.",
     ],
   },
@@ -392,10 +392,10 @@ export const projects: Project[] = [
     featured: false,
     hue: 320,
     links: {},
-    tags: ["Time series", "Optuna", "XGBoost"],
-    stack: ["Python", "Pandas", "Prophet", "XGBoost", "Optuna", "scikit-learn"],
+    tags: ["Time series", "Optuna", "Prophet"],
+    stack: ["Python", "Pandas", "Prophet", "Optuna", "scikit-learn"],
     summary:
-      "Daily and intraday call-volume forecasting with Prophet and XGBoost, tuned with Optuna and evaluated against the existing manual forecast.",
+      "Daily and intraday call-volume forecasting with Prophet, tuned with Optuna and evaluated against the existing manual forecast.",
     metrics: [
       { value: "8.42%", label: "next-month MAPE" },
       { value: "vs 9.45%", label: "manual forecast" },
@@ -414,7 +414,7 @@ export const projects: Project[] = [
       "Historical volumes",
       "Calendar & event features",
       "Chronological validation",
-      "Prophet / XGBoost",
+      "Prophet model",
       "Intraday forecasts",
       "Consistency checks",
       "Compare vs manual",
@@ -444,7 +444,7 @@ export const projects: Project[] = [
       },
     ],
     results: [
-      "XGBoost next-month MAPE of 8.42% vs 9.45% for the manual forecast on the evaluated period (~11% relative improvement).",
+      "Prophet next-month MAPE of 8.42% vs 9.45% for the manual forecast on the evaluated period (~11% relative improvement).",
       "Intraday 30-minute forecast workflow with daily bounds and actuals for comparison.",
     ],
   },

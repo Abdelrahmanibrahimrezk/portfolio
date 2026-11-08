@@ -21,7 +21,7 @@ export const experience: ExperienceItem[] = [
       "Built a large-scale Arabic call-analytics workflow: audio preprocessing → ASR → LLM enrichment → TIBCO Spotfire reporting.",
       "Fine-tuned Whisper for Egyptian-Arabic customer-care calls, a 61% relative WER reduction (96% → 37%).",
       "Cut transcription runtime by 87% with multiprocessing, dynamic batching and dual-GPU inference.",
-      "Shipped hierarchical intent classification with dynamic few-shot prompting and LoRA-tuned Qwen-14B (up to 87% accuracy).",
+      "Shipped hierarchical intent classification with dynamic few-shot prompting and LoRA-tuned Qwen-14B (87% accuracy across 160 intents + sub-intents).",
       "Built LLM call summaries, recurring-issue rollups, PII redaction and callback-promise extraction.",
       "Delivered a bilingual Lifestyle Analyzer (Azure AI) and KPI-based audience targeting for the Vodafone Maaky campaign.",
     ],
