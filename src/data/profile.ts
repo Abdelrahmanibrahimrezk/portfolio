@@ -19,7 +19,7 @@ export const profile = {
   whatsappHref: "https://wa.me/201018160185?text=Hi%20Abdelrahman%2C%20I%20saw%20your%20portfolio",
   // Square photo in /public; set to null to show the monogram instead.
   photo: "/images/profile.jpg" as string | null,
-  resumeUrl: "/resume/Abdelrahman_Abdelrehim_CV.pdf",
+  resumeUrl: "/resume/Abdelrahman_Abdelrehim_Senior_AI.pdf",
   headline:
     "I build speech and LLM systems that turn messy, real-world Arabic audio into structured insight businesses can act on.",
   summary:
